@@ -9,49 +9,65 @@
 </head>
 
 <body>
-    <h1>Multiplicação/Tabuada Online</h1>
+    <h1>Multiplicação Online</h1>
     <div class="tela">
         <div class="InputsAndTexts">
             <div class="text">
-                <span>Digite o multiplicando</span>
+                <span>Digite o multiplicando e o multiplicador maximo</span>
 
             </div>
             <div class="inputs">
                 <input type="text" id="multiplicando">
+                <input type="text" id="maximoMultiplicador">
             </div>
         </div>
         <div class="buttons">
-            <button id="calcular">Calcular Tabuada</button>
+            <button id="calcular">Calcular</button>
             <div id="result">
 
             </div>
         </div>
-        
+
 
         <script>
 
-            let btnCalcularTabuada = document.getElementById('calcular')
+            let btnCalcularMultiplicacao = document.getElementById('calcular')
             let result = document.getElementById('result')
 
-            function calcularTabuada() {
+            function calcularMultiplicacao() {
                 result.textContent = ''
-                
-                let multiplicando = document.getElementById('multiplicando').value
 
-                let multiplicador = 0
+                let n1 = document.getElementById('multiplicando').value
 
-                while (multiplicador <= 10){
-                    let resultado = multiplicando * multiplicador
-                    
-                    console.log(resultado)
+                let n2 = document.getElementById('maximoMultiplicador').value
 
-                    let exibirResultado = document.createElement('p')
-                    exibirResultado.textContent = `${multiplicando} X ${multiplicador} = ${resultado}`
+                if (n2 >= n1) {
+                    while (n2 >= n1) {
 
-                    result.appendChild(exibirResultado)
-                    multiplicador++
+                        let resultado = n1 * n2
+                        let exibirResultado = document.createElement('p')
+                        exibirResultado.textContent = `${n1} X ${n2} = ${resultado}`
+
+                        result.appendChild(exibirResultado)
+                        n1++
+
+                    }
+
+                } else {
+                    while (n1 >= n2) {
+
+                        let resultado = n2 * n1
+                        let exibirResultado = document.createElement('p')
+                        exibirResultado.textContent = `${n2} X ${n1} = ${resultado}`
+
+                        result.appendChild(exibirResultado)
+
+                        n2++
+
+                    }
 
                 }
+
 
 
             }
@@ -59,7 +75,7 @@
 
 
 
-            btnCalcularTabuada.addEventListener('click', calcularTabuada)
+            btnCalcularMultiplicacao.addEventListener('click', calcularMultiplicacao)
 
         </script>
     </div>
